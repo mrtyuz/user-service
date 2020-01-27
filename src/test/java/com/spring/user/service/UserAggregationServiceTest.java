@@ -16,8 +16,8 @@ public class UserAggregationServiceTest {
     @Before
     public void setUp() {
         RestTemplateBuilder restTemplateBuilder = new RestTemplateBuilder();
-        userDetailService = new UserDetailServiceImpl(new UserServiceImpl(restTemplateBuilder),
-                new UserCommentServiceImpl(restTemplateBuilder));
+        userDetailService = new UserDetailServiceImpl(new UserServiceImpl(restTemplateBuilder, "http://jsonplaceholder.typicode.com/users/%s"),
+                new UserCommentServiceImpl(restTemplateBuilder, "http://jsonplaceholder.typicode.com/posts?userId=%s"));
     }
 
     @Test

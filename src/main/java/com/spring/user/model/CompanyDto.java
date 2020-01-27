@@ -1,15 +1,13 @@
 package com.spring.user.model;
 
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class UserDto {
-    private Long id;
+public class CompanyDto {
     private String name;
-    private String username;
-    private String email;
-    private AddressDto address;
-    private CompanyDto company;
+    private String catchPhrase;
+    private String bs;
 }

@@ -17,7 +17,7 @@ public class UserCommentServiceTest {
 
     @Before
     public void setUp() {
-        userCommentService = new UserCommentServiceImpl(new RestTemplateBuilder());
+        userCommentService = new UserCommentServiceImpl(new RestTemplateBuilder(), "http://jsonplaceholder.typicode.com/posts?userId=%s");
     }
 
     @Test

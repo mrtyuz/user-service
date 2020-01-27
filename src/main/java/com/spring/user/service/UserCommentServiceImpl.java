@@ -2,6 +2,7 @@ package com.spring.user.service;
 
 
 import com.spring.user.model.UserCommentDto;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
@@ -12,8 +13,11 @@ import java.util.concurrent.CompletableFuture;
 @Service
 public class UserCommentServiceImpl implements UserCommentService {
     private final RestTemplate restTemplate;
+    private final String url;
 
-    public UserCommentServiceImpl(RestTemplateBuilder restTemplateBuilder) {
+    public UserCommentServiceImpl(RestTemplateBuilder restTemplateBuilder,
+                                  @Value("${userCommentServiceUrl}") String url) {
+        this.url = url;
         this.restTemplate = restTemplateBuilder.build();
 
     }
@@ -21,7 +25,6 @@ public class UserCommentServiceImpl implements UserCommentService {
     @Override
     @Async
     public CompletableFuture<UserCommentDto[]> findUserComment(Long userId) {
-        String url = String.format("http://jsonplaceholder.typicode.com/posts?userId=%s", userId);
-        return CompletableFuture.completedFuture(restTemplate.getForObject(url, UserCommentDto[].class));
+        return CompletableFuture.completedFuture(restTemplate.getForObject(String.format(url, userId), UserCommentDto[].class));
     }
 }

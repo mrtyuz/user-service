@@ -17,7 +17,7 @@ public class UserServiceTest {
 
     @Before
     public void setUp() {
-        userService = new UserServiceImpl(new RestTemplateBuilder());
+        userService = new UserServiceImpl(new RestTemplateBuilder(), "http://jsonplaceholder.typicode.com/users/%s");
     }
 
     @Test
