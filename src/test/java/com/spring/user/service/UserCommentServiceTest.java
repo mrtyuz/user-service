@@ -3,6 +3,7 @@ package com.spring.user.service;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.boot.web.client.RestTemplateBuilder;
 
 import java.util.concurrent.ExecutionException;
 
@@ -13,7 +14,7 @@ public class UserCommentServiceTest {
 
     @Before
     public void setUp() {
-        userCommentService = new UserCommentServiceImpl();
+        userCommentService = new UserCommentServiceImpl(new RestTemplateBuilder());
     }
 
     @Test
@@ -23,6 +24,6 @@ public class UserCommentServiceTest {
 
     @Test
     public void shouldReturnUserDtoWhenUserExist() throws ExecutionException, InterruptedException {
-        assertNotNull(userCommentService.findUserComment());
+        assertNotNull(userCommentService.findUserComment(1L));
     }
 }
