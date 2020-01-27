@@ -12,6 +12,7 @@ public class UserCommentServiceImpl implements UserCommentService {
 
     public UserCommentServiceImpl(RestTemplateBuilder restTemplateBuilder) {
         this.restTemplate = restTemplateBuilder.build();
+
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.spring.user.service;
 
 
+import com.spring.user.exception.EntityNotFoundException;
 import com.spring.user.model.UserDto;
 import org.junit.Before;
 import org.junit.Test;
@@ -27,6 +28,12 @@ public class UserServiceTest {
     @Test
     public void shouldReturnUserDtoWhenUserExist() throws ExecutionException, InterruptedException {
         CompletableFuture<UserDto> user = userService.findUser(1L);
+        assertNotNull(user);
+    }
+
+    @Test(expected = EntityNotFoundException.class)
+    public void shouldHandleWhenUserNotExist() throws ExecutionException, InterruptedException {
+        CompletableFuture<UserDto> user = userService.findUser(100L);
         assertNotNull(user);
     }
 }
