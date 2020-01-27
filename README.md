@@ -2,6 +2,9 @@
 
 A Spring Boot based application to get data with async calls end expose the result by a REST endpoint.
 
+### Approach & Decision
+I preferred to use java Java’s CompletableFuture interface for asynchronous calls.
+
 ### Technologies
 - Java 8
 - Spring Boot
